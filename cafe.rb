@@ -19,7 +19,8 @@ def take_order(menus)
     puts "(#{i})#{menu[:name]}: #{menu[:price]}円"
   end
   print '>'
-  order_number = gets.to_i
+  # 配列は0からスタートするため、入力の数字から1を引く
+  order_number = gets.to_i - 1
   puts "#{menus[order_number][:name]}(#{menus[order_number][:price]}円)ですね。"
   order_number
 end
@@ -30,5 +31,6 @@ order1 = take_order(DRINKS)
 puts 'フードメニューはいかがですか?'
 order2 = take_order(FOODS)
 
-total = FOODS[order1][:price] + DRINKS[order2][:price]
+# Integer型にして計算
+total = FOODS[order1][:price].to_i + DRINKS[order2][:price].to_i
 puts "お会計は#{total}円になります。ありがとうございました！"
